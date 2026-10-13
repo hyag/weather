@@ -299,9 +299,10 @@ async function fetchWeather(city) {
     document.getElementById('loading').classList.remove('show');
     document.getElementById('error').classList.remove('show');
     document.getElementById('card').classList.add('show');
-  } catch {
+  } catch(err) {
+    console.error('Weather error:', err);
     document.getElementById('loading').classList.remove('show');
-    document.getElementById('error').textContent = '都市が見つかりませんでした。英語で入力してください。';
+    document.getElementById('error').textContent = '都市が見つかりませんでした。英語で入力してください。エラー: ' + err.message;
     document.getElementById('error').classList.add('show');
     document.getElementById('card').classList.remove('show');
   }
